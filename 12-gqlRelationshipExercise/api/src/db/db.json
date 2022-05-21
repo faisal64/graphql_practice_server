@@ -1,0 +1,32 @@
+{
+  "user": {
+    "id": "jBWMVGjm50l6LGwepDoty",
+    "username": "frontendmaster"
+  },
+  "pet": [
+    {
+      "id":"1",
+      "type":"CAT",
+      "name":"Billy",
+      "user":"jBWMVGjm50l6LGwepDoty",
+      "img":"../img1.png",
+      "createdAt": 121211213
+    },
+    {
+      "id":"2",
+      "type":"CAT",
+      "name":"PussyCat",
+      "user":"jBWMVGjm50l6LGwepDoty",
+      "img":"../img2.png",
+      "createdAt": 121211213
+    },
+    {
+      "id":"3",
+      "type":"DOG",
+      "name":"Tomy",
+      "user":"jBWMVGjm50l6LGwepDoty",
+      "img":"../img3.png",
+      "createdAt": 121211213
+    }
+  ]
+}
