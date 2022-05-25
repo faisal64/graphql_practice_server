@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "email": "member@member.com",
+      "password": "password",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1571213104370,
+      "id": "Z2hlvDmLOSRZGebC_Z_aA"
+    },
+    {
+      "email": "master@code.com",
+      "password": "password",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1653251740956,
+      "id": "9h3b3yDB8k_Q9o17Lsr5D"
+    },
+    {
+      "email": "aslkdjf@lsdjf.com",
+      "password": "asdf",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1653389759562,
+      "id": "ylaiNFKmCq1nomoGeMvU7"
+    }
+  ],
+  "posts": [
+    {
+      "message": "Hello",
+      "author": "9h3b3yDB8k_Q9o17Lsr5D",
+      "createdAt": 1653390194908,
+      "id": "ZTUg8WMykiM8c2CJ7I9Y1"
+    },
+    {
+      "message": "Hi there ",
+      "author": "9h3b3yDB8k_Q9o17Lsr5D",
+      "createdAt": 1653390209300,
+      "id": "kL3NaLamOi6r-OEeY4xly"
+    }
+  ],
+  "settings": []
+}
