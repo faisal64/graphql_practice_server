@@ -1,4 +1,4 @@
-const {ApolloServer} = require('apollo-server')
+const {ApolloServer, AuthenticationError, UserInputError, ApolloError} = require('apollo-server')
 const typeDefs = require('./typedefs')
 const resolvers = require('./resolvers')
 const {createToken, getUserFromToken} = require('./auth')
@@ -6,7 +6,21 @@ const db = require('./db')
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  resolvers,  
+  formatError(e){// e is graphql error. Any error that is thrown anywhere will get caught here in formatError. 
+                 // We can customize error object in our way and just return it. 
+    console.log(e);
+    
+    /** We can format error object */
+    /** we can even just throw error from here */
+    /** We can check whether it is AuthenticationError or UserInputError or ApolloError */
+    if(e instanceof AuthenticationError){
+      //do something
+    }
+
+    //must return the error object.
+    return e;
+  },
   context({req, connection}) {
     //step 4: Add any needed authentication and context.
     const context =  {...db}
