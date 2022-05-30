@@ -4,7 +4,6 @@
   * Great for when you have Types that share common fields, but differ slightly
   */
 ///////////////////////////////////////////////////////////////
-
 const gql = require('graphql-tag');
 const {ApolloServer} = require('apollo-server');
 const typeDefs = gql`
