@@ -32,7 +32,6 @@ const typeDefs = gql`
     brand: ShoeType!
     size: Int!
   }
-  #There the input type is created for mutaion.
   input ShoesInput {
     brand: ShoeType,
     size: Int
@@ -41,14 +40,11 @@ const typeDefs = gql`
     brand: ShoeType
     size: String
   }
-  """
-    whatever is written inside triple quotes will be shown in graphql tools.
-  """
+
   type Query{
     me:User!,
     shoes(input: ShoesInput): [Shoe]!
   }
-  #Mutation type is created there
   type Mutation{
     newShoe(input: NewShoeInput!): Shoe!
   }
@@ -71,15 +67,9 @@ const resolvers = {
       }
     }
   },
-  //Here is the resolver of Mutation type
   Mutation:{
     newShoe(_,{input}){
-      //Here we can save the input in db.
       return input;
-      /**
-       * Return values for mutation fields should be the updated or just created or deleted value.
-       * So that user on client side can cache it.
-       */
     }
   }
 }
