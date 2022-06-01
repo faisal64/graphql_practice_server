@@ -74,7 +74,7 @@ const resolvers = {
   Query: {
     shoes(_,{input}){
       console.log(input);
-      return ;
+      return shoes;
     },
     me(_, __, ctx, info){
       return user;
