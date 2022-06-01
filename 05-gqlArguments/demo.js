@@ -28,7 +28,7 @@ const typeDefs = gql`
     name: String
   }
   type Query {
-    me(own:Own): User!,
+    me(own:OwnInput): User!,
     pets(type:String!): [Pet]!
   }
 `

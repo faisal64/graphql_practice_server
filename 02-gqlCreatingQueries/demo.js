@@ -22,19 +22,18 @@ const typeDefs = gql`
     avatar: String
     friends: [User!]! 
   }
-
+  #a minimum Schema needs is a type Query. If there is no query how someone is gonna access it.
   type Query {
     me: User!
   }
 `
-/**
- * type Query -> a minimum Schema needs is a type Query. If there is no query how someone is gonna access it.
- * By default it is named Query but we can give any name but, in that case we will have explicitly tell the 
- * resolver that this is the Query type.
- */
 
 
 const resolvers = {
+  /*
+   * By default it is named Query but we can give any name but, in that case we will have explicitly tell the 
+   * resolver that this is the Query type.
+   */
   Query: {
     me(){
       return {
