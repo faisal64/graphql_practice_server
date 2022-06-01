@@ -5,11 +5,7 @@ const pubSub = new PubSub();
 const {authenticated, authorized} = require('./auth')
 const NEW_POST = 'NEW_POST'
 
-/**
- * Anything Query / Mutation resolver
- * using a user for a DB query
- * requires user authenication
- */
+
 module.exports = {
   Query: {
     me:authenticated((_, __, {user}) => {
@@ -27,7 +23,6 @@ module.exports = {
     userSettings: authenticated((_, __, {user, models}) => {
       return models.Settings.findOne({user: user.id})
     }),
-    // public resolver
     feed(_, __, {models}) {
       return models.Post.findMany()
     }
@@ -38,16 +33,14 @@ module.exports = {
     }),
     createPost:authenticated((_, {input}, {user, models}) => {
       const post = models.Post.createOne({...input, author: user.id})
-      //Step 2: Setup pubsub protocol server side
       pubSub.publish(NEW_POST, { newPost: post })
-      /////////////////////////////////////////////
       return post
     }),
 
     updateMe: authenticated((_, {input}, {user, models}) => {
       return models.User.updateOne({id: user.id}, input)
     }),
-    // admin role
+
     invite: authenticated(authorized('ADMIN',(_, {input}, {user}) => {
       return {from: user.id, role: input.role, createdAt: Date.now(), email: input.email}
     })),
@@ -73,17 +66,15 @@ module.exports = {
       return {token, user}
     }
   },
-  //Step 3: Create Subscription event resolvers
+
   Subscription:{
     newPost:{
       subscribe: () => pubSub.asyncIterator(NEW_POST)
     }
   },
-  ////////////////////////////////////////////////////
+
   User: {
-    /*
-      We may not need field label authentication and authorization.
-    */
+
     posts(root, _, {user, models}) {
       if (root.id !== user.id) {
         throw new Error('nope')
